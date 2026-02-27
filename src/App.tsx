@@ -3,18 +3,43 @@ import Navbar from "./components/Navbar"
 import Home from "./pages/Home"
 import Conversao from "./pages/Conversao"
 import Historico from "./pages/Historico"
+import Login from "./pages/Login"
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-100">
-      <Navbar />
+    <Routes>
+      <Route path="/" element={<Login />} />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/conversao" element={<Conversao />} />
-        <Route path="/historico" element={<Historico />} />
-      </Routes>
-    </div>
+      <Route
+        path="/home"
+        element={
+          <>
+            <Navbar />
+            <Home />
+          </>
+        }
+      />
+
+      <Route
+        path="/conversao"
+        element={
+          <>
+            <Navbar />
+            <Conversao />
+          </>
+        }
+      />
+
+      <Route
+        path="/historico"
+        element={
+          <>
+            <Navbar />
+            <Historico />
+          </>
+        }
+      />
+    </Routes>
   )
 }
 
