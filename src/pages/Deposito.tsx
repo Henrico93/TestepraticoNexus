@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useApp } from "../context/AppContext";
-import type { Ativo } from "../context/AppContext";
+import type { Ativo } from "../types"
 
 export default function Deposito() {
   const { usuarios, realizarDeposito } = useApp();

@@ -77,8 +77,8 @@ export default function Usuarios() {
                 <td className="p-3">{u.nome}</td>
                 <td className="p-3">{u.email}</td>
                 <td className="p-3">{u.status}</td>
-                <td className="p-3">{u.criadoEm}</td>
-                <td className="p-3">{u.ultimaAtividade}</td>
+                <td className="p-3">{u.criadoEm.toLocaleDateString()}</td>
+                <td className="p-3">{u.ultimaAtividade.toLocaleDateString()}</td>
               </tr>
             ))}
           </tbody>

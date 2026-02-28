@@ -1,0 +1,1 @@
+export type Ativo = "BRL" | "BTC" | "ETH" | "USDT"
