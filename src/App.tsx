@@ -1,32 +1,41 @@
-import { Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { AppProvider } from "./context/AppContext"
 import Navbar from "./components/Navbar"
-import Login from "./pages/Login"
 import Home from "./pages/Home"
 import Usuarios from "./pages/Usuarios"
 import Deposito from "./pages/Deposito"
 import Saque from "./pages/Saque"
 import Conversao from "./pages/Conversao"
+import Login from "./pages/Login"
 
-function Layout({ children }: { children: React.ReactNode }) {
+function AppLayout() {
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="min-h-screen bg-[#121214]">
       <Navbar />
-      <div className="p-6">{children}</div>
+      <main>
+        <Routes>
+          <Route path="/home" element={<Home />} />
+          <Route path="/usuarios" element={<Usuarios />} />
+          <Route path="/deposito" element={<Deposito />} />
+          <Route path="/saque" element={<Saque />} />
+          <Route path="/conversao" element={<Conversao />} />
+        </Routes>
+      </main>
     </div>
   )
 }
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-
-      <Route path="/home" element={<Layout><Home /></Layout>} />
-      <Route path="/usuarios" element={<Layout><Usuarios /></Layout>} />
-      <Route path="/deposito" element={<Layout><Deposito /></Layout>} />
-      <Route path="/saque" element={<Layout><Saque /></Layout>} />
-      <Route path="/conversao" element={<Layout><Conversao /></Layout>} />
-    </Routes>
+    <AppProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" replace />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/*" element={<AppLayout />} />
+        </Routes>
+      </BrowserRouter>
+    </AppProvider>
   )
 }
 
