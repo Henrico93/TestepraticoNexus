@@ -1,10 +1,21 @@
-import { NavLink } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { useState, useEffect } from "react"
-import { Menu, X, TrendingUp, Home, Users, ArrowDownToLine, ArrowUpFromLine, RefreshCcw } from "lucide-react"
+import {
+  Menu,
+  X,
+  TrendingUp,
+  Home,
+  Users,
+  ArrowDownToLine,
+  ArrowUpFromLine,
+  RefreshCcw,
+  LogOut,
+} from "lucide-react"
 
 function Navbar() {
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10)
@@ -26,6 +37,12 @@ function Navbar() {
     { to: "/saque", label: "Saque", icon: ArrowUpFromLine },
     { to: "/conversao", label: "Conversao", icon: RefreshCcw },
   ]
+
+  const handleLogout = () => {
+    localStorage.removeItem("auth") // ajuste se sua chave for diferente
+    navigate("/login")
+    setOpen(false)
+  }
 
   return (
     <nav
@@ -63,6 +80,15 @@ function Navbar() {
                 {item.label}
               </NavLink>
             ))}
+
+            {/* BOTÃO LOGOUT */}
+            <button
+              onClick={handleLogout}
+              className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-[#9999a5] hover:text-[#f87171] hover:bg-[#2a2a30] transition-all duration-300"
+            >
+              <LogOut className="w-4 h-4" />
+              Logout
+            </button>
           </div>
 
           {/* Botao Mobile */}
@@ -81,7 +107,7 @@ function Navbar() {
       {/* Menu Mobile */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
-          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div className="px-4 py-3 bg-[#1a1a1e]/95 backdrop-blur-xl border-t border-[#333338]/50 flex flex-col gap-1">
@@ -100,6 +126,15 @@ function Navbar() {
               {item.label}
             </NavLink>
           ))}
+
+          {/* LOGOUT MOBILE */}
+          <button
+            onClick={handleLogout}
+            className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium text-[#9999a5] hover:text-[#f87171] hover:bg-[#2a2a30] transition-all duration-300"
+          >
+            <LogOut className="w-4 h-4" />
+            Logout
+          </button>
         </div>
       </div>
     </nav>

@@ -6,21 +6,28 @@ export default function Usuarios() {
   const { usuarios } = useApp()
 
   const [busca, setBusca] = useState("")
-  const [statusFiltro, setStatusFiltro] = useState("Todos")
+  const [statusFiltro, setStatusFiltro] = useState<"Todos" | "Ativo" | "Pendente" | "Bloqueado">("Todos")
   const [paginaAtual, setPaginaAtual] = useState(1)
 
   const itensPorPagina = 5
 
   const usuariosFiltrados = useMemo(() => {
-    return usuarios
-      .filter(
+    let resultado = usuarios
+
+    if (busca.trim() !== "") {
+      const termo = busca.toLowerCase()
+      resultado = resultado.filter(
         (u) =>
-          u.nome.toLowerCase().includes(busca.toLowerCase()) ||
-          u.email.toLowerCase().includes(busca.toLowerCase())
+          u.nome.toLowerCase().includes(termo) ||
+          u.email.toLowerCase().includes(termo)
       )
-      .filter((u) =>
-        statusFiltro === "Todos" ? true : u.status === statusFiltro
-      )
+    }
+
+    if (statusFiltro !== "Todos") {
+      resultado = resultado.filter((u) => u.status.toLowerCase() === statusFiltro.toLowerCase())
+    }
+
+    return resultado
   }, [usuarios, busca, statusFiltro])
 
   const totalPaginas = Math.ceil(usuariosFiltrados.length / itensPorPagina)
@@ -64,7 +71,7 @@ export default function Usuarios() {
       </div>
 
       {/* Filtros */}
-      <div className="flex flex-col gap-4 mb-6 animate-fade-in-up delay-200 fill-backwards">
+      <div className="flex flex-col gap-4 mb-6 animate-fade-in-up">
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-[#9999a5]" />
           <input
@@ -107,7 +114,7 @@ export default function Usuarios() {
       </div>
 
       {/* Tabela */}
-      <div className="bg-[#1a1a1e] border border-[#333338]/60 rounded-2xl overflow-hidden animate-fade-in-up delay-300 fill-backwards">
+      <div className="bg-[#1a1a1e] border border-[#333338]/60 rounded-2xl overflow-hidden animate-fade-in-up">
         <div className="overflow-x-auto">
           <table className="min-w-full">
             <thead>

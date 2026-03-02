@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { AppProvider } from "./context/AppContext"
+
 import Navbar from "./components/Navbar"
 import Home from "./pages/Home"
 import Usuarios from "./pages/Usuarios"
@@ -8,7 +9,7 @@ import Saque from "./pages/Saque"
 import Conversao from "./pages/Conversao"
 import Login from "./pages/Login"
 
-function AppLayout() {
+function LayoutComNavbar() {
   return (
     <div className="min-h-screen bg-[#121214]">
       <Navbar />
@@ -19,6 +20,9 @@ function AppLayout() {
           <Route path="/deposito" element={<Deposito />} />
           <Route path="/saque" element={<Saque />} />
           <Route path="/conversao" element={<Conversao />} />
+
+          {/* qualquer rota inválida vai para home */}
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </Routes>
       </main>
     </div>
@@ -30,9 +34,14 @@ function App() {
     <AppProvider>
       <BrowserRouter>
         <Routes>
+          {/* sempre iniciar em login */}
           <Route path="/" element={<Navigate to="/login" replace />} />
+
+          {/* tela de login SEM navbar */}
           <Route path="/login" element={<Login />} />
-          <Route path="/*" element={<AppLayout />} />
+
+          {/* todas as outras rotas usam layout */}
+          <Route path="/*" element={<LayoutComNavbar />} />
         </Routes>
       </BrowserRouter>
     </AppProvider>
