@@ -63,7 +63,7 @@ function Navbar() {
               <div className="absolute -inset-1 bg-[#dc2626]/20 rounded-xl blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
             <span className="text-lg font-bold text-[#f0f0f2] tracking-tight">
-              Crypto<span className="text-[#dc2626]">Finance</span>
+              TESTE<span className="text-[#dc2626]">Nexus</span>
             </span>
           </NavLink>
 

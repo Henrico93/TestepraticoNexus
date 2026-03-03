@@ -1,73 +1,221 @@
-# React + TypeScript + Vite
+# 💰 TESTE PRÁTICO – NEXUS CRYPTO DASHBOARD
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dashboard financeiro focado em criptomoedas, desenvolvido como teste prático de Front-end.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tecnologias Utilizadas
 
-## React Compiler
+- React
+- Vite
+- TypeScript
+- TailwindCSS
+- React Router DOM
+- Context API
+- CoinGecko API (apenas na tela de Conversão)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Objetivo do Projeto
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+Construir um painel administrativo simulando uma plataforma financeira de criptomoedas com:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Organização de código
+- Interface moderna e responsiva
+- Uso de dados mockados
+- Integração real com API externa (somente Conversão)
+- Separação clara de responsabilidades
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+# TESTE PRÁTICO – NEXUS CRYPTO DASHBOARD
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Dashboard financeiro focado em criptomoedas, desenvolvido como teste prático de Front-end.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tecnologias Utilizadas
+
+- React
+- Vite
+- TypeScript
+- TailwindCSS
+- React Router DOM
+- Context API
+- CoinGecko API (apenas na tela de Conversão)
+
+---
+
+## Objetivo do Projeto
+
+Construir um painel administrativo simulando uma plataforma financeira de criptomoedas com:
+
+- Organização de código
+- Interface moderna e responsiva
+- Uso de dados mockados
+- Integração real com API externa (somente Conversão)
+- Separação clara de responsabilidades
+
+---
+
+# Acesso ao Sistema
+
+Para acessar o sistema utilize:
+
+Email:
+UserAdminNexus@gmail.com
+
+Senha:
+admin123
+
+
+Não há autenticação real com back-end, apenas validação simulada (mock).
+
+---
+
+# Funcionalidades
+
+## Login
+- Validação simples de email e senha
+- Redirecionamento para `/home`
+- Simulação de autenticação
+
+---
+
+## Home (Dashboard)
+- Cards com indicadores financeiros mockados
+- Resumo de movimentações
+- Exibição de saldos por ativo:
+  - BRL
+  - BTC
+  - ETH
+  - USDT
+
+---
+
+## Usuários
+- Lista com 10+ usuários mockados
+- Busca por nome ou email
+- Filtro por status:
+  - ACTIVE
+  - PENDING
+  - BLOCKED
+- Paginação client-side
+- Exibição de:
+  - Nome
+  - Email
+  - Status
+  - Data de criação
+  - Última atividade
+
+---
+
+## Depósito
+- Selecionar usuário
+- Selecionar ativo
+- Informar valor
+- Atualização de saldo
+- Registro de movimentação (DEPOSIT)
+
+---
+
+## Saque
+- Selecionar usuário
+- Selecionar ativo
+- Informar valor
+- Validação de saldo suficiente
+- Exibição de erro caso saldo insuficiente
+- Registro de movimentação (WITHDRAW)
+- Atualização do saldo
+
+---
+
+## Conversão (API REAL – CoinGecko)
+
+Integração com a API pública da CoinGecko para conversão de criptomoedas.
+
+Funcionalidades:
+- Selecionar moeda de origem
+- Selecionar moeda de destino
+- Informar valor
+- Botão converter
+- Exibição da taxa utilizada
+- Tratamento de loading
+- Tratamento de erro
+- Evita chamadas desnecessárias (somente ao clicar em converter)
+
+---
+
+# Dados Mockados (Obrigatório)
+
+Localizados em:
+
+src/mocks/
+
+
+Contém:
+
+- usuários.ts → 10+ usuários
+- movimentacoes.ts → 30+ movimentações iniciais
+- ativos.ts → BRL, BTC, ETH, USDT
+
+Tipos de movimentação:
+- DEPOSIT
+- WITHDRAW
+
+Status de usuário:
+- ACTIVE
+- PENDING
+- BLOCKED
+
+---
+
+# Estrutura do Projeto
+
+TESTEPRATICONEXUS
+│
+├── src
+│ ├── assets
+│ ├── components
+│ │ └── Navbar.tsx
+│ │
+│ ├── context
+│ │ └── AppContext.tsx
+│ │
+│ ├── data
+│ │ └── cryptoData.ts
+│ │
+│ ├── hooks
+│ │ └── useScrollReveal.ts
+│ │
+│ ├── mocks
+│ │ ├── ativos.ts
+│ │ ├── movimentacoes.ts
+│ │ └── usuarios.ts
+│ │
+│ ├── pages
+│ │ ├── Conversao.tsx
+│ │ ├── Deposito.tsx
+│ │ ├── Home.tsx
+│ │ ├── Login.tsx
+│ │ ├── Saque.tsx
+│ │ └── Usuarios.tsx
+│ │
+│ ├── types.ts
+│ ├── App.tsx
+│ ├── main.tsx
+│ └── globals.css
+│
+└── package.json
+
+-----------------------------------
+
+Instale as dependências:
+
+npm install
+
+-----------------------------------
+
+Execute o projeto:
+
+npm run dev
