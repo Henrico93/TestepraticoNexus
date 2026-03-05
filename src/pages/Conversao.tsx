@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { RefreshCcw, ArrowRight, Loader2, AlertCircle, TrendingUp } from "lucide-react"
+import { RefreshCcw, AlertCircle, } from "lucide-react"
 
 type Moeda = {
   id: string

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { TrendingUp, Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react"
+import { TrendingUp, Mail, Lock, Eye, EyeOff } from "lucide-react"
 
 function Login() {
   const navigate = useNavigate()
