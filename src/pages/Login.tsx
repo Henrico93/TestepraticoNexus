@@ -56,7 +56,7 @@ function Login() {
             <TrendingUp className="w-8 h-8 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-[#f0f0f2] tracking-tight mt-4">
-            Crypto<span className="text-[#dc2626]">Finance</span>
+            Teste<span className="text-[#dc2626]">Nexus</span>
           </h1>
           <p className="text-[#9999a5] text-sm mt-2">Acesse sua conta</p>
         </div>
